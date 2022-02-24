@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>Vanila JS</title>
+        <script src="./js_1.js"></script>
+        <script type="text/javascript">
+            function demoInternAlert()
+            {
+                alert("Internal Alert");
+            }
+            function demoInternConfirm()
+            {
+                /*alert("Internal Confirm");*/
+                if(confirm('Are you sure?'))
+                {
+                    alert("Yessss")
+                }
+                else
+                {
+                    alert("Noooo")
+                }
+            }
+            function demoInternPrompt()
+            {
+                var fName=prompt("Enter your name:");
+                alert(fName);
+            }
+
+            function colorChange()
+            {
+                document.getElementById("D1").style.backgroundColor=document.getElementById("CP1").value;
+            }
+            function changeToRed()
+            {
+                document.getElementById("D1").style.backgroundColor="Red";
+            }
+            function changeToGreen()
+            {
+                document.getElementById("D1").style.backgroundColor="green";
+            }
+        </script>
+        <style>
+            div{
+                background-color: aqua;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="button" value="Alert Inline" onclick="alert('Inline alert')">
+        <input type="button" value="Confirm Inline" onclick="confirm('Confirm alert')">
+        <input type="button" value="Prompt Inline" onclick="prompt('Enter your id')"><hr/>
+
+        <input type="button" value="Alert Inline" onclick="demoInternAlert()" >
+        <input type="button" value="Confirm Inline" onclick="demoInternConfirm()" >
+        <input type="button" value="Prompt Inline" onclick="demoInternPrompt()" ><hr/>
+        
+
+        <input type="button" value="Alert Inline" onclick="Alert1()" >
+        <input type="button" value="Confirm Inline" onclick="Confirm1()" >
+        <input type="button" value="Prompt Inline" onclick="Prompt1()" ><hr/>
+
+        <div style="height: 200px;width: 200px;" id="D1"></div><hr/>
+        <input type="color" name="ColorPicker" id="CP1" onchange="colorChange()"><hr/>
+
+        <input type="button" value="Red Button" id="btnRed" onclick="changeToRed()">
+        <input type="button" value="Green Button" id="btnGreen" onclick="changeToGreen()">
+    
+    </body>
+</html>

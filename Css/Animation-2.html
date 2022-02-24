@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <title>Animation 2</title>
+        <style>
+            div
+            {
+                background-color: coral;
+                height: 100px;
+                width: 100px;
+                transition: 4s;
+            }
+            #Translate:hover{
+                -webkit-transform: translate(40px,40px);
+                -moz-transform: translate(40px,40px);
+                -ms-transform: translate(40px,40px);
+                animation-duration: 10s;
+                background-color: aquamarine;
+
+            }
+            #Rotate:hover{
+                -webkit-transform: rotate(30deg);
+                -moz-transform: rotate(30deg);
+                animation-duration: 10s;
+                background-color: aquamarine;
+
+            }
+            #Rotate3d:hover
+            {
+                -webkit-transform: rotate3d(1,1,0,360deg);
+                animation-duration:10s;
+                background-color:red;
+            }
+            #Scale:hover{
+                -webkit-transform: scale(0.5,1);
+                animation-duration: 10s;
+                background-color: brown;
+            }
+            #Skew:hover{
+                -webkit-transform: skew(90deg);
+                animation-duration: 10s;
+                background-color: blue;
+            }
+            #Opacity:hover
+            {
+                opacity: 0.5;
+            }
+            #tshadow:hover
+            {
+                text-shadow: 3px 3px 3px black;
+            }
+            #bshadow:hover
+            {
+                box-shadow: 0px 0px 20px red;
+            }
+            #rgba:hover
+            {
+                background-color: darkmagenta;
+            }
+            #Overflow
+            {
+                overflow: auto;
+            }
+            #bradius:hover
+            {
+                border-radius: 50%;
+            }
+
+            
+        </style>
+    </head>
+    <body>
+        <div id="Translate">Translate</div><hr/>
+        <div id="Rotate">Rotate</div><hr/>
+        <div id="Rotate3d">Rotate 3D</div><hr/>
+        <div id="Scale">Scale</div><hr/>
+        <div id="Skew">Skew</div><hr/>
+        <div id="Opacity">Opacity</div><hr/>
+        <div id="Overflow">Overflow Overflow Overflow Overflow Overflow overflow Overflow Overflow Overflow</div><hr/>
+        <div id="tshadow">Text Shadow</div><hr/>
+        <div id="bshadow">Box Shadow</div><hr/>
+        <div id="bradius">Border Radius</div><hr/>
+        <div id="rgba">RGBA</div>
+    </body>
+</html>

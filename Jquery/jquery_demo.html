@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Jquery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript"> </script>
+        <script>
+            $(document).ready(function(){
+                $('#btn_Show').attr('disabled',true);
+                $('#btn_Hide').click(function(){
+                
+                    if(confirm("Sure want to hide"))
+                    {
+                        $('#D1').hide(2000);
+                        $('#btn_Show').attr('disabled',false);
+                        $('#btn_Hide').attr('disabled',true);
+                        $('#btn_Toggle').text("Show");
+                    }
+
+                });
+                $('#btn_Show').click(function(){
+                   /* $('#btn_Show').attr('disabled',false);*/
+                    if(confirm("Sure want to show"))
+                    {
+                        $('#D1').show(2000);
+                        $('#btn_Show').attr('disabled',true);
+                        $('#btn_Hide').attr('disabled',false);
+                        $('#btn_Toggle').text("Hide");
+                        
+                    }
+
+                });
+                $('#btn_Toggle').click(function(){
+                    alert($("#btn_Toggle").text());
+                    ($(this).text()=="Hide")
+                    ?($(this).text("Show"),$('#D1').hide(2000),$('#btn_Hide').attr('disabled',true),$('#btn_Show').attr('disabled',false))
+                    :($(this).text("Hide"),$('#D1').show(2000),$('#btn_Hide').attr('disabled',false),$('#btn_Show').attr('disabled',true));
+                });
+
+                $('#plus').click(function(){
+                    if(confirm("Do you want to increase?"))
+                    {
+                        var MDH = parseInt($('#D1').css("height"));
+                        var MDW = parseInt($('#D1').css("width"));
+                        if(MDH<=500)
+                        {
+                            MDW+=10;
+                            MDH+=10;
+                            $("#D1").css('height',MDH);
+                            $("#D1").css('width',MDW);
+                        }
+                    }
+
+                })
+                $('#minus').click(function(){
+                    if(confirm("Do you want to increase?"))
+                    {
+                        var MDH = parseInt($('#D1').css("height"));
+                        var MDW = parseInt($('#D1').css("width"));
+                        if(MDH>=20)
+                        {
+                            MDW-=10;
+                            MDH-=10;
+                            $("#D1").css('height',MDH);
+                            $("#D1").css('width',MDW);
+                        }
+                    }
+
+                })
+            })
+        </script>
+   
+
+</head>
+<body>
+        <div id="D1" style="height: 200px;width: 200px;background-color: coral;" ></div><hr/>
+        <button id="btn_Hide" value="Hide">Hide</button>
+        <button id="btn_Show" value="Show">Show</button><hr/>
+        <button id="btn_Toggle" value="Hide">Hide</button><hr/>
+        <button id="plus" value="plus">+</button>
+        <button id="minus" value="minus">-</button>
+</body>
+</html>

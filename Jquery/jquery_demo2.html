@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo 2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript"> </script>
+        <script>
+            $(document).ready(function(){
+                $('#btIn').click(function(){
+                        $("#D1").fadeIn(1000);
+                        $("#D2").fadeIn(2000);
+                        $("#D3").fadeIn(3000);
+
+                })
+                $('#btOut').click(function(){
+                        $("#D1").fadeOut(1000);
+                        $("#D2").fadeOut(2000);
+                        $("#D3").fadeOut(3000);
+
+                })
+                $('#btToggle').click(function(){
+                        $("#D1").fadeToggle(1000);
+                        $("#D2").fadeToggle(2000);
+                        $("#D3").fadeToggle(3000);
+                })
+            })
+        </script>
+</head>
+<body>
+    <button id="btIn">Fade In</button>
+    <button id="btOut">Fade Out</button>
+    <button id="btToggle">Toggle</button>
+    <br><br>
+
+    <div id="D1" style="height: 150px;width: 150px;background-color: aquamarine;display: none;"></div><br>
+    <div id="D2" style="height: 150px;width: 150px;background-color: black;display: none;"></div><br>
+    <div id="D3" style="height: 150px;width: 150px;background-color: rebeccapurple;display: none;"></div><br>
+</body>
+</html>
