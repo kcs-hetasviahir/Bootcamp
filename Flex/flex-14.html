@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex demo -14 Order</title>
+    <style type="text/css">
+
+        body {
+          margin: 0;
+          padding: 0;
+          font-family: verdana;
+        }
+  
+        .main-container {
+          border: 4px solid #826a98;
+          display: flex; /* block level flex container */
+        }
+  
+        .item {
+          color: #ffffff;
+          font-size: 1rem;
+          padding: 0.75rem;
+          text-align: center;
+        }
+  
+        .item1 {
+          background-color:#DDA0DD;
+        }
+  
+        .item2 {
+          background-color:#BF94E4;
+          order: -1;
+        }
+  
+        .item3 {
+          order: -1;
+          background-color:#734F96;
+        }
+  
+        .item4 {
+          background-color:#FBAED2;
+        }
+  
+        .item5 {
+          background-color:#EE82EE;
+          order: 2;  /*higher order number will aligned to extreme right or at the end */
+        }
+        
+        .item6 {
+          background-color:#ADE4CA;
+        }
+  
+        .item7 {
+          background-color:#A6D5AE;
+        }
+  
+        .item8 {order: 3;
+          background-color:#8FBC8E;
+        }
+  
+        .item9 {
+          background-color: #64A466;
+          order: 2; /* higher order number will aligned to extreme right or at the end */
+        }
+        
+        .item10 {
+          background-color:#2E8B56;
+        }
+  
+      </style>
+
+</head>
+<body>
+    <div class="main-container">
+        <div class="item item1">Item 1</div>
+        <div class="item item2">Item 2</div>
+        <div class="item item3">Item 3</div>
+        <div class="item item4">Item 4</div>
+        <div class="item item5">Item 5</div>
+        <div class="item item6">Item 6</div>
+        <div class="item item7">Item 7</div>
+        <div class="item item8">Item 8</div>
+        <div class="item item9">Item 9</div>
+        <div class="item item10">Item 10</div>
+    </div>
+</body>
+</html>

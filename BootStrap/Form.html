@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Form</title>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        
+		<link href="css/bootstrap/bootstrap.css" type="text/css" rel="stylesheet" />
+		
+		<!--CDN LINK OF JQUERY PARENT PLUG IN - COMPULSORY TO BE HERE. -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
+        <style type="text/css">
+			#CNAForms{box-shadow:0px 0px 3px gray;margin-top:30px;margin-bottom:30px;}
+			i.fa,b{color:teal;}
+		</style>
+        <script type="text/javascript">
+            var $FNameLNameRegEx = /^([a-zA-Z]{2,20})$/;
+            var $EmailIdRegEx = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,8}\b$/i;
+            var $ConNoRegEx = /^([0-9]{10})$/;
+            var $PasswordRegEx = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,12}$/;
+            var $AgeRegEx = /^([0-9]{1,2})$/;
+
+            
+
+            $(document).ready(function(){
+
+                var txtFNameFlag = false;
+                var txtLNameFlag = false;
+                var txtContactFlag = false;
+                var txtEmailFlag = false;
+                var txtPassFlag=false;
+                var txtAgeFlag=false;
+                var txtDateFlag = false;
+
+                var curr_date = new Date();
+                var month = curr_date.getMonth()+1;
+                var day = curr_date.getDate();
+                var output = curr_date.getFullYear() - 18 + '-' +
+                (month<10 ? '0' : '') + month + '-' +
+                (day<10 ? '0' : '') + day;
+                $("#DOB").attr("max",output)
+
+
+            $("#fName").blur(function(){
+                $("#txtFNameValidation").empty();
+                if($(this).val()=="" || $(this).val()==null)
+                {
+                    $("#txtFNameValidation").html("(*)Firstname is required..!!");
+                    txtFNameFlag=false;
+                }
+                else
+                {
+                    if(!($("#fName").val().match($FNameLNameRegEx)))
+                    {
+                        $("#txtFNameValidation").html("(*)Firstname is Invalid..!!");
+                        txtFNameFlag=false;
+                    }
+                    else
+                    {
+                        txtFNameFlag=true;
+                    }
+                }
+            });
+            $("#lName").blur(function(){
+                $("#txtLNameValidation").empty();
+                if($(this).val()=="" || $(this).val()==null)
+                {
+                    $("#txtLNameValidation").html("(*)Lastname is required..!!");
+                    txtLNameFlag=false;
+                }
+                else
+                {
+                    if(!($("#lName").val().match($FNameLNameRegEx)))
+                    {
+                        $("#txtFNameValidation").html("(*)Lastname is Invalid..!!");
+                        txtLNameFlag=false;
+                    }
+                    else
+                    {
+                        txtLNameFlag=true;
+                    }
+                }
+            });
+            $("#contactNo").blur(function(){
+                $("#txtContactValidation").empty();
+                if($(this).val()=="" || $(this).val()==null)
+                {
+                    $("#txtContactValidation").html("(*)Contact No. is required..!!");
+                    txtContactFlag=false;
+                }
+                else
+                {
+                    if(!($(this).val().match($ConNoRegEx)))
+                    {
+                        $("#txtContactValidation").html("(*)Contact number is Invalid..!!");
+                        txtContactFlag=false;
+                    }
+                    else
+                    {
+                        txtContactFlag=true;
+                    }
+                }
+            });
+            $("#emailId").blur(function(){
+                $("#txtEmailValidatation").empty();
+                if($(this).val()=="" || $(this).val()==null)
+                {
+                    $("#txtEmailValidation").html("(*)Email is required..!!");
+                    txtEmailFlag=false;
+                }
+                else
+                {
+                    if(!($(this).val().match($EmailIdRegEx)))
+                    {
+                        $("#txtEmailValidation").html("(*)Email id  is Invalid..!!");
+                        txtEmailFlag=false;
+                    }
+                    else
+                    {
+                        txtEmailFlag=true;
+                    }
+                }
+            });
+            $("#age").blur(function(){
+                $("#txtAgeValidatation").empty();
+                if($(this).val()=="" || $(this).val()==null )
+                {
+                    $("#txtAgeValidation").html("(*)Age is required..!!");
+                    txtAgeFlag=false;
+                }
+                else
+                {
+                    if(!($("#age").val().match($AgeRegEx))|| $(this).val()<18)
+                    {
+                        $("#txtAgeValidation").html("(*)Age is Invalid..!!");
+                        txtAgeFlag=false;
+                    }
+                    else
+                    {
+                        txtAgeFlag=true;
+                    }
+                }
+            });
+            $("#pass").blur(function()
+            {
+                $("#txtPassValidation").empty();
+                if($(this).val()=="" || $(this).val()==null)
+                {
+                    $("#txtPassValidation").html("(*)Password is required..!!");
+                    txtContactFlag=false;
+                }
+                else
+                {
+                    if(!($("#pass").val().match($PasswordRegEx)))
+                    {
+                        $("#txtPassValidation").html("(*)Password is Invalid..!!");
+                        txtPassFlag=false;
+                    }
+                    else
+                    {
+                        txtPassFlag=true;
+                    }
+                }
+            });
+            $("#DOB").change(function () {
+                const date = new Date();
+                date.setFullYear(date.getFullYear() - 18);
+                $("#txtDOBValidation").empty();
+                if ($(this).val() == "" || $(this).val() == null) {
+                    $("#txtDOBValidation").html("Empty birth date not valid");
+                    birth_date = false;
+                } else {
+                    console.log(new Date($(this).val()) < date);
+                    if (new Date($(this).val()) > date) {
+                    $("#txtDOBValidation").html("+18 only");
+                    birth_date = false;
+                    } else {
+                    birth_date = true;
+                    }
+
+                }
+            });
+            $("#btnSubmit").click(function()
+            {
+                $("#txtFNameValidation").empty();
+                if($("#fName").val()=="" || $("#fName").val()==null)
+                {
+                    $("#txtFNameValidation").html("(*)Firstname is required..!!");
+                    txtFNameFlag=false;
+                }
+                else
+                {
+                    if(!($("#fName").val().match($FNameLNameRegEx)))
+                    {
+                        $("#txtFNameValidation").html("(*)Firstname is Invalid..!!");
+                        txtFNameFlag=false;
+                    }
+                    else
+                    {
+                        txtFNameFlag=true;
+                    }
+                }
+                $("#txtLNameValidation").empty();
+                if($("#lName").val()=="" || $("#lName").val()==null)
+                {
+                    $("#txtLNameValidation").html("(*)Lastname is required..!!");
+                    txtLNameFlag=false;
+                }
+                else
+                {
+                    if(!($("#lName").val().match($FNameLNameRegEx)))
+                    {
+                        $("#txtFNameValidation").html("(*)Lastname is Invalid..!!");
+                        txtLNameFlag=false;
+                    }
+                    else
+                    {
+                        txtLNameFlag=true;
+                    }
+                }
+                $("#txtContactValidation").empty();
+                if($("#contactNo").val()=="" || $("#contactNo").val()==null)
+                {
+                    $("#txtContactValidation").html("(*)Contact No. is required..!!");
+                    txtContactFlag=false;
+                }
+                else
+                {
+                    if(!($("#contactNo").val().match($ConNoRegEx)))
+                    {
+                        $("#txtContactValidation").html("(*)Contact number is Invalid..!!");
+                        txtContactFlag=false;
+                    }
+                    else
+                    {
+                        txtContactFlag=true;
+                    }
+                }
+           
+                $("#txtEmailValidatation").empty();
+                if($("#emailId").val()=="" || $("#emailId").val()==null)
+                {
+                    $("#txtEmailValidation").html("(*)Email is required..!!");
+                    txtEmailFlag=false;
+                }
+                else
+                {
+                    if(!($("#emailId").val().match($EmailIdRegEx)))
+                    {
+                        $("#txtEmailValidation").html("(*)Email id  is Invalid..!!");
+                        txtEmailFlag=false;
+                    }
+                    else
+                    {
+                        txtEmailFlag=true;
+                    }
+                }
+          
+                $("#txtAgeValidatation").empty();
+                if($("#age").val()=="" || $("#age").val()==null )
+                {
+                    $("#txtAgeValidation").html("(*)Age is required..!!");
+                    txtAgeFlag=false;
+                }
+                else
+                {
+                    if(!($("#age").val().match($AgeRegEx))|| $("#age").val()<18)
+                    {
+                        $("#txtAgeValidation").html("(*)Age is Invalid..!!");
+                        txtAgeFlag=false;
+                    }
+                    else
+                    {
+                        txtAgeFlag=true;
+                    }
+                }
+                $("#txtPassValidation").empty();
+                if($("#pass").val()=="" || $("#pass").val()==null)
+                {
+                    $("#txtPassValidation").html("(*)Password is required..!!");
+                    txtPassFlag=false;
+                }
+                else
+                {
+                    if(!($("#pass").val().match($PasswordRegEx)))
+                    {
+                        $("#txtPassValidation").html("(*)Password is Invalid..!!");
+                        txtPassFlag=false;
+                    }
+                    else
+                    {
+                        txtPassFlag=true;
+                    }
+                }
+
+                const date = new Date();
+                date.setFullYear(date.getFullYear() - 18);
+                $("#txtDOBValidation").empty();
+                if ($("#DOB").val() == "" || $("#DOB").val() == null) 
+                {
+                    $("#txtDOBValidation").html("Empty birth date not valid");
+                    txtDateFlag = false;
+                } 
+                else 
+                {
+                    console.log(new Date($("#DOB").val()) < date);
+                    if (new Date($("#DOB").val()) > date) {
+                    $("#txtDOBValidation").html("+18 only");
+                    txtDateFlag = false;
+                    } else {
+                    txtDateFlag = true;
+                    }
+
+                }
+                
+                if(txtFNameFlag==true && txtLNameFlag==true && txtContactFlag==true && txtEmailFlag==true && txtPassFlag==true && txtAgeFlag==true && txtDateFlag==true)
+                {
+                    alert("Form Submitted Successfully");
+                }
+                else
+                {
+                    alert("Invalid Details");
+                }
+            });
+            
+        });
+       
+        </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6 col-xs-12" id="CNAForms"> 
+                <h3 class="text-center"><i class="fa fa-user-plus"></i> Create New Account</h3><hr/>
+                <div class="form-group">
+                    <b>Firstname</b>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input type="text" id="fName" placeholder="Enter your name :" class="form-control" >
+                    </div>
+                    <small id="txtFNameValidation" class="text-danger"></small>
+                </div>
+                <div class="form-group">
+                    <b>Lastname</b>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input type="text" id="lName" placeholder="Enter your name :" class="form-control">
+                    </div>
+                    <small id="txtLNameValidation" class="text-danger"></small>
+                </div>
+                <div class="form-group">
+                    <b>Email</b>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                        <input type="text" id="emailId" placeholder="Enter your name :" class="form-control">
+                    </div>
+                    <small id="txtEmailValidation" class="text-danger"></small>
+                </div>
+                <div class="form-group">
+                    <b>Contact Number</b>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                        <input type="text" id="contactNo" placeholder="Enter your name :" class="form-control">
+                    </div>
+                    <small id="txtContactValidation" class="text-danger"></small>
+                </div>
+                <div class="form-group">
+                    <b>Password</b>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                        <input type="text" id="pass" placeholder="Enter your name :" class="form-control">
+                    </div>
+                    <small id="txtPasswordValidation" class="text-danger"></small>
+                </div>
+                <div class="form-group">
+                    <b>Gender</b>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-female"></i> | <i class="fa fa-male"></i></i></span>
+                        <select  id="Gender" class="form-control">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- <div class="form-group">
+                    <b>Salary</b>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                        <input type="number" id="DOB" class="form-control">
+                    </div>
+                </div> -->
+                <div class="form-group">
+                    <b>Date of Birth</b>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        <input type="date" id="DOB" class="form-control">
+                    </div>
+                    <small id="txtDOBValidation" class="text-danger"></small>
+                </div>
+                <div class="form-group">
+                    <b>Age</b>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-child"></i></span>
+                        <input type="number" id="age" class="form-control">
+                    </div>
+                    <small id="txtAgeValidation" class="text-danger"></small>
+                </div>
+                    <hr>
+                    <div class="form-group text-center" >
+						<a class="btn btn-primary" id="btnSubmit"><i class="fa fa-user-plus" style="color:white;"></i> Create New Account</a>
+					</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
