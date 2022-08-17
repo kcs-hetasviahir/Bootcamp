@@ -1,0 +1,328 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('icomoon.eot?v1');
+  src:  url('icomoon.eot?v1#iefix') format('embedded-opentype'),
+    url('icomoon.ttf?v1') format('truetype'),
+    url('icomoon.woff?v1') format('woff'),
+    url('icomoon.svg?v1#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-log-in:before {
+  content: "\e921";
+  color: #00599c;
+}
+.icon-qr_code_scanner:before {
+  content: "\e920";
+}
+.icon-diagram:before {
+  content: "\e91e";
+}
+.icon-plus:before {
+  content: "\e91f";
+}
+.icon-delete:before {
+  content: "\e91b";
+}
+.icon-edit:before {
+  content: "\e91c";
+  color:#00599c;
+}
+.icon-edit-disabled:before {
+  content: "\e91c";
+  color:#D3D3D3;
+}
+.icon-view:before {
+  content: "\e91d";
+  color:#00599c;
+}
+.icon-view-disabled:before {
+  content: "\e91d";
+  color:#D3D3D3;
+}
+.icon-pendingapproval:before {
+  content: "\e918";
+}
+.icon-certificateissued:before {
+  content: "\e919";
+}
+.icon-add:before {
+  content: "\e91a";
+}
+.icon-menuarrow:before {
+  content: "\e917";
+}
+.icon-manageproducts:before {
+  content: "\e901";
+}
+.icon-managegateways:before {
+  content: "\e902";
+}
+.icon-so:before {
+  content: "\e903";
+}
+.icon-policy:before {
+  content: "\e904";
+}
+.icon-ca:before {
+  content: "\e905";
+}
+.icon-ra:before {
+  content: "\e906";
+}
+.icon-certificate:before {
+  content: "\e907";
+}
+.icon-subscriber:before {
+  content: "\e908";
+}
+.icon-subscribergroup:before {
+  content: "\e909";
+}
+.icon-rolemanagement:before {
+  content: "\e90a";
+}
+.icon-groupmanagement:before {
+  content: "\e90b";
+}
+.icon-usermanagement:before {
+  content: "\e90c";
+}
+.icon-viewaudit:before {
+  content: "\e90d";
+}
+.icon-manageaccess:before {
+  content: "\e90e";
+}
+.icon-dashboard:before {
+  content: "\e90f";
+}
+.icon-email:before {
+  content: "\e900";
+}
+.icon-logout:before {
+  content: "\e910";
+}
+.icon-notification:before {
+  content: "\e911";
+}
+.icon-setting:before {
+  content: "\e912";
+}
+.icon-seach:before {
+  content: "\e913";
+}
+.icon-checkmark:before {
+  content: "\e914";
+}
+.icon-lock:before {
+  content: "\e915";
+}
+.icon-user:before {
+  content: "\e916";
+}
+
+.icon-checkmark2:before {
+  content: "\ea11";
+}
+.icon-checkbox-checked:before {
+  content: "\ea52";
+}
+
+@font-face {
+  font-family: 'icomoon';
+  src: url('review-font-checked/icomoon.eot?mz4r5o');
+  src: url('review-font-checked/icomoon.eot?mz4r5o#iefix') format('embedded-opentype'), url('review-font-checked/icomoon.ttf?mz4r5o') format('truetype'), url('review-font-checked/icomoon.woff?mz4r5o') format('woff'), url('review-font-checked/icomoon.svg?mz4r5o#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-checkbox-checked:before {
+  content: "\ea52";
+}
+
+
+@font-face {
+  font-family: 'icomoon';
+  src: url('review-font-checkmark2/icomoon.eot?ymzf3c');
+  src: url('review-font-checkmark2/icomoon.eot?ymzf3c#iefix') format('embedded-opentype'), url('review-font-checkmark2/icomoon.ttf?ymzf3c') format('truetype'), url('review-font-checkmark2/icomoon.woff?ymzf3c') format('woff'), url('review-font-checkmark2/icomoon.svg?ymzf3c#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-checkmark2:before {
+  content: "\ea11";
+}
+
+.icon-checkbox-checked:before {
+  content: "\ea52";
+}
+
+@font-face {
+  font-family: 'icomoon';
+  src: url('review-font-failed/icomoon.eot?q7a1t3');
+  src: url('review-font-failed/icomoon.eot?q7a1t3#iefix') format('embedded-opentype'), url('review-font-failed/icomoon.ttf?q7a1t3') format('truetype'), url('review-font-failed/icomoon.woff?q7a1t3') format('woff'), url('review-font-failed/icomoon.svg?q7a1t3#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-cross:before {
+  content: "\ea0f";
+}
+
+/* sales rep font */
+@font-face {
+  font-family: 'icomoon';
+  src:  url('salesrep/icomoon.eot?l9vnbw');
+  src:  url('salesrep/icomoon.eot?l9vnbw#iefix') format('embedded-opentype'),
+    url('salesrep/icomoon.ttf?l9vnbw') format('truetype'),
+    url('salesrep/icomoon.woff?l9vnbw') format('woff'),
+    url('salesrep/icomoon.svg?l9vnbw#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-users:before {
+  content: "\e972";
+}
+/* end sales rep font */
+
+/* partner font*/
+@font-face {
+  font-family: 'icomoon';
+  src:  url('partners/icomoon.eot?fqdpy8');
+  src:  url('partners/icomoon.eot?fqdpy8#iefix') format('embedded-opentype'),
+    url('partners/icomoon.ttf?fqdpy8') format('truetype'),
+    url('partners/icomoon.woff?fqdpy8') format('woff'),
+    url('partners/icomoon.svg?fqdpy8#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-user-tie:before {
+  content: "\e976";
+}
+
+/* end partner font*/
+
+/* tiers font */
+@font-face {
+  font-family: 'icomoon';
+  src:  url('tiers/icomoon.eot?gr9flf');
+  src:  url('tiers/icomoon.eot?gr9flf#iefix') format('embedded-opentype'),
+    url('tiers/icomoon.ttf?gr9flf') format('truetype'),
+    url('tiers/icomoon.woff?gr9flf') format('woff'),
+    url('tiers/icomoon.svg?gr9flf#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-tree:before {
+  content: "\e9bc";
+}
+/* tiers font end */

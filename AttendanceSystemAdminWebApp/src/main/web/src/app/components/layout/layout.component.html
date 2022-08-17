@@ -1,0 +1,88 @@
+<div id="wrapper" [ngClass]="Menu ? 'toggled' : ''">
+  <app-header></app-header>
+  <div class="maincontent">
+
+    <div class="leftsection">
+      <div>
+        <section class="sidebar mCustomScrollbar">
+          <ul class="sidebar-menu">
+            <li class="treeview single submenunone" routerLinkActive="active">
+              <a [routerLink]="['./dashboard']">
+                <i class="las la-tachometer-alt"></i>Dashboard
+              </a>
+            </li>
+          </ul>
+        </section>
+        <section class="sidebar mCustomScrollbar">
+          <ul class="sidebar-menu">
+            <li class="treeview submenunone" routerLinkActive="active">
+              <a [routerLink]="['./mis-report']">
+                <i class="las la-clipboard-list"></i>MIS Reports
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <section class="sidebar mCustomScrollbar">
+          <ul class="sidebar-menu dropdown">
+            <li class="treeview submenunone" routerLinkActive="active" (click)="dropdownOpen()">
+              <a>
+                <i class="las la-user-alt"></i>User Management
+              </a>
+            </li>
+          </ul>
+          <ul class="list-unstyled collapse ml-5" [ngClass]="isShow ? 'show' : ''">
+            <li>
+              <a [routerLink]="['./user-management']"
+                class="d-inline-flex align-items-center rounded text-decoration-none">System User
+                <i class="las la-user-alt"></i>
+              </a>
+
+            </li>
+            <li class="">
+              <a [routerLink]="['./view-teacher']"
+                class="d-inline-flex align-items-center rounded text-decoration-none">
+                <i class="las la-chalkboard-teacher"></i>
+                Teacher</a>
+            </li>
+          </ul>
+        </section>
+
+        <section class="sidebar mCustomScrollbar">
+          <ul class="sidebar-menu">
+            <li class="treeview submenunone" routerLinkActive="active">
+              <a [routerLink]="['./place-registration']">
+                <i class="las la-map-marker"></i>Place Registration
+              </a>
+            </li>
+          </ul>
+        </section>
+        <section class="sidebar mCustomScrollbar">
+          <ul class="sidebar-menu">
+            <li class="treeview submenunone" routerLinkActive="active">
+              <a [routerLink]="['./master-data']">
+                <i class="las la-server"></i>Master Data Management
+              </a>
+            </li>
+          </ul>
+        </section>
+      </div>
+
+    </div>
+    <div class="contentarea">
+      <div class="contentarea-wraper">
+        <router-outlet>
+          <div class="mobilemenu">
+            <button type="button" class="hamburger is-closed" [ngClass]="hamburger_cross ? 'is-open' : 'is-closed'"
+              data-toggle="offcanvas" (click)="hamburgerclick()">
+              <span class="hamb-top"></span>
+              <span class="hamb-middle"></span>
+              <span class="hamb-bottom"></span>
+            </button>
+          </div>
+        </router-outlet>
+      </div>
+      <app-footer></app-footer>
+    </div>
+  </div>
+</div>

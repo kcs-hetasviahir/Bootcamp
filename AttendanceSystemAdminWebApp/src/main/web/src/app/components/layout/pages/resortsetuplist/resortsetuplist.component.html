@@ -1,0 +1,65 @@
+<div class="titlerow">
+  <h1 class="title">
+    <i class="las la-user-alt"></i>USERS
+  </h1>
+</div>
+<div class="content">
+  <div class="d-flex justify-content-between">
+    <h2 class="section-title">USERS</h2>
+    <div class="switch-field text-end" *ngIf="addresort">
+      <button class="btn small-btn" type="button" (click)="openResort()">ADD USERS</button>
+    </div>
+  </div>
+  <div class="content-body">
+    <div class="rowboxwidget paddingnone">
+      <div class="ps-4" id="non-printable">
+        <mat-form-field appearance="standard">
+          <mat-label>Search</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Search here" #input>
+        </mat-form-field>
+      </div>
+
+      <div class="table-responsive" id="user-table">
+        <table class="table table-borderless" mat-table [dataSource]="dataSource" (matSortChange)="sortData($event)"
+          matSort id="table-data">
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header width="100"> Id </th>
+            <td mat-cell *matCellDef="let element" width="100"> {{element.id}} </td>
+          </ng-container>
+          <ng-container matColumnDef="username">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header width="200"> User Name </th>
+            <td mat-cell *matCellDef="let element" width="200"> {{element.username}} </td>
+          </ng-container>
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header width="200"> Name </th>
+            <td mat-cell *matCellDef="let element" width="200"> {{element.name}} </td>
+          </ng-container>
+          <ng-container matColumnDef="userRole">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header width="200"> User Role </th>
+            <td mat-cell *matCellDef="let element" width="200"> {{element.userRole}}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef width="100"> Action </th>
+
+            <td mat-cell *matCellDef="let element" width="100">
+              <button type='edit' class='button-custom'>
+                <i class='icon-edit' title='Update Resort' (click)="update(element)"></i>
+              </button>
+              <button type='button' class='button-custom'>
+                <i class='icon-delete' title='Delete Resort' (click)="Delete(element)"></i>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+      <mat-paginator [length]="rowCount" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+        [showFirstLastButtons]="true" (page)="pageNavigations($event)">
+      </mat-paginator>
+    </div>
+  </div>
+</div>

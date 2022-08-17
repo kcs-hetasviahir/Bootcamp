@@ -1,0 +1,48 @@
+<div class="login" style="min-height: 100vh;">
+	<div class="loginwrapper">
+		<div class="loginlogo">
+			<a href="#"> <img src="assets/images/splash_logo.png" alt="" title="logo image"> </a>
+		</div>
+		<div class="loginblock">
+			<div class="loginlinks">
+				<h2>LOGIN </h2>
+			</div>
+			<form class="form" [formGroup]="loginForm" (ngSubmit)="onSignInClick()" #f="ngForm">
+				<div class="fieldgroup">
+					<label>Email</label>
+					<div class="form-control">
+						<i class="icon-user left"></i>
+						<input type="email" formControlName="username" class="inputfield" />
+						<i class="icon-checkmark right"></i>
+					</div>
+
+					<div *ngIf="(loginFormControls.username.touched ) || isFormSubmitted" class="text-danger mt-2">
+						<div *ngIf="loginFormControls.username?.errors?.required">Email is required</div>
+						<div *ngIf="loginFormControls.username?.errors?.pattern">Please enter a valid email address
+						</div>
+					</div>
+				</div>
+				<div class="fieldgroup">
+					<label>Password</label>
+					<div class="form-control">
+						<i class="icon-lock left"></i>
+						<input [type]="hideop ? 'text' : 'password'" formControlName="password" class="inputfield" />
+						<span class="login-icon" (click)="hideop = !hideop"
+							[ngClass]="hideop ? 'eye-close' : 'eye-open'"></span>
+						<i class="icon-checkmark right"></i>
+					</div>
+					<div *ngIf="(loginFormControls.password.touched && loginFormControls.password.invalid) || isFormSubmitted"
+						class="text-danger mt-2">
+						<div *ngIf="loginFormControls.password?.errors?.required">Password is required</div>
+
+					</div>
+				</div>
+				<div class="fieldgroup fieldgroup-btn center">
+					<div class="action-control">
+						<button class="btn submit-button" type="submit" [disabled]="!f.form.valid">Sign In</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

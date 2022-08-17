@@ -1,0 +1,186 @@
+<!-- Listing here-->
+<div class="titlerow">
+  <h1 class="title">
+    <i class="las la-clipboard-list"></i>MIS REPORTS
+    <a class="title-under-icon ml-auto" title="View Notes" href="javascript:void(0);">
+    </a>
+  </h1>
+</div>
+<div class="content">
+  <div class="d-flex justify-content-between">
+    <h2>MIS REPORTS</h2>
+    <div class="switch-field text-end">
+    </div>
+  </div>
+  <div class="minheight">
+    <div class="rowboxwidget paddingnone ">
+      <form class="p-0" [formGroup]="misReportForm" (ngSubmit)="onFormSubmit()">
+        <div class="content-body p-3">
+          <div class="row">
+            <div class="col-md-6 col-xl-4">
+              <mat-form-field class="example-full-width w-100">
+                <label>Employee Id</label>
+                <input matInput formControlName="employeeId">
+              </mat-form-field>
+            </div>
+            <div class="col-md-6 col-xl-4">
+              <mat-form-field class="example-full-width w-100">
+                <label>District</label>
+                <mat-select formControlName="ssaDistrict" (selectionChange)="distictSelectedValue($event)">
+                  <mat-option [value]=0>All</mat-option>
+                  <mat-option *ngFor="let data of distictList" [value]="data.districtCode">{{
+                    data.districtName }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6 col-xl-4">
+              <mat-form-field class="example-full-width w-100">
+                <label>Block</label>
+                <mat-select formControlName="ssaBlock" (selectionChange)="blockSelectedValue($event)">
+                  <mat-option [value]=0>All</mat-option>
+                  <mat-option *ngFor="let data of blockList" [value]="data.blockCode">{{data.blockName }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6 col-xl-4">
+              <mat-form-field class="example-full-width w-100">
+                <label>Cluster</label>
+                <mat-select formControlName="ssaCluster" (selectionChange)="clusterSelectedValue($event)">
+                  <mat-option [value]=0>All</mat-option>
+                  <mat-option *ngFor="let data of clusterList" [value]="data.crcCode">{{data.crcName }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6 col-xl-4">
+              <mat-form-field class="example-full-width w-100">
+                <label>School</label>
+                <mat-select formControlName="ssaSchool">
+                  <mat-option [value]=0>All</mat-option>
+                  <mat-option *ngFor="let data of schoolList" [value]="data.schoolCode">{{data.schoolName }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6 col-xl-4">
+              <mat-form-field class="example-full-width w-100">
+                <label> Designation/Role</label>
+                <mat-select formControlName="designation">
+                  <mat-option [value]=0>All</mat-option>
+                  <mat-option *ngFor="let data of designationList" [value]="data.id">{{
+                    data.designationName }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class="col-md-6 col-xl-4 mt-1">
+              <mat-form-field appearance="fill" class="example-full-width w-100 mt-2">
+                <mat-label>From Date</mat-label>
+                <input matInput [matDatepicker]="frompicker" formControlName="fromDate">
+                <mat-datepicker-toggle matSuffix [for]="frompicker"></mat-datepicker-toggle>
+                <mat-datepicker #frompicker></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6 col-xl-4 mt-1">
+              <mat-form-field appearance="fill" class="example-full-width w-100 mt-2">
+                <mat-label>To Date</mat-label>
+                <input matInput [matDatepicker]="topicker" formControlName="toDate">
+                <mat-datepicker-toggle matSuffix [for]="topicker"></mat-datepicker-toggle>
+                <mat-datepicker #topicker></mat-datepicker>
+              </mat-form-field>
+            </div>
+
+            <div class="col-md-6 col-xl-4">
+              <mat-form-field class="example-full-width w-100">
+                <label>Supervisor Name</label>
+                <input matInput formControlName="supervisorName">
+              </mat-form-field>
+            </div>
+            <div class="col-md-6 col-xl-4 mb-3 mb-md-0">
+              <label class="d-block mt-3">
+                Attendance Status
+              </label>
+              <mat-radio-group formControlName="attendanceStatus" class="example-full-width w-100">
+                <mat-radio-button checked=true value="" class="me-4">All</mat-radio-button>
+                <mat-radio-button value="PRESENT" class="me-4">Present</mat-radio-button>
+                <mat-radio-button value="ABSENT" class="me-4">Absent</mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <div class="col-md-12 pt-2 d-flex align-items-center">
+              <button mat-raised-button color="primary" class="me-2">Search</button>
+              <button mat-raised-button class="me-2 bg-grey" (click)="resetForm()">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="minheight">
+    <div class="rowboxwidget paddingnone" id="print-content">
+      <div class="ps-4 d-md-flex align-items-center justify-content-between" id="non-printable">
+        <mat-form-field appearance="standard">
+          <mat-label>Search</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Search here" #input>
+        </mat-form-field>
+        <div class="">
+          <button mat-raised-button color="primary" class="me-2 mb-2 mb-md-0" (click)="openEmailModal()">Email</button>
+          <button mat-raised-button color="primary" class="me-2 mb-2 mb-md-0" (click)="print()">Print</button>
+          <button mat-raised-button color="primary" class="me-2" (click)="generateExcel()">Export to Excel </button>
+          <button mat-raised-button color="primary" class="me-4" (click)="generatePDF('table-data')">Generate
+            PDF</button>
+        </div>
+      </div>
+      <div class="table-responsive" id="mis-table">
+        <table mat-table [dataSource]="dataSource" (matSortChange)="sortData($event)" matSort
+          class="table table-borderless" id="table-data">
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header width="50"> No. </th>
+            <td mat-cell *matCellDef="let element" width="50"> {{element.id}} </td>
+          </ng-container>
+          <ng-container matColumnDef="teacherName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="mat-column-teacherName"> Teacher Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.teacherName}} </td>
+          </ng-container>
+          <ng-container matColumnDef="attendanceDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Attendance Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.attendanceDate}} </td>
+          </ng-container>
+          <ng-container matColumnDef="createdDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Attendance Time </th>
+            <td mat-cell *matCellDef="let element"> {{element.createdDate| time}}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="attendanceStatus">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Attendance Status </th>
+            <td mat-cell *matCellDef="let element"> {{element.attendanceStatus}} </td>
+          </ng-container>
+          <ng-container matColumnDef="transactionId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Transaction Id </th>
+            <td mat-cell *matCellDef="let element" class="text-break"> {{element.transactionId}} </td>
+          </ng-container>
+          <ng-container matColumnDef="deviceId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> deviceId </th>
+            <td mat-cell *matCellDef="let element" class="text-break"> {{element.deviceId}} </td>
+          </ng-container>
+          <ng-container matColumnDef="latitude">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Latitude </th>
+            <td mat-cell *matCellDef="let element" class="text-break"> {{element.latitude}} </td>
+          </ng-container>
+          <ng-container matColumnDef="longitude">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Longitude </th>
+            <td mat-cell *matCellDef="let element" class="text-break"> {{element.longitude}} </td>
+          </ng-container>
+          <ng-container matColumnDef="accuracy">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Accuracy </th>
+            <td mat-cell *matCellDef="let element" class="text-break"> {{element.accuracy}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+      <mat-paginator id="non-printable" [length]="rowCount" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+        [showFirstLastButtons]="true" (page)="pageNavigations($event)">
+      </mat-paginator>
+    </div>
+  </div>
+</div>

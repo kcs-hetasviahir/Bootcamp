@@ -1,0 +1,34 @@
+<div class="header">
+  <div class="logo">
+    <a [routerLink]="['./mis-report']">
+      <img src="assets/images/SSAIcon.png" alt="" title="" class="img-fluid">
+    </a>
+  </div>
+  <div class="pullright notificationrow">
+    <div class="userprofile">
+      <ul class="nav navbar-nav">
+        <li><button mat-raised-button (click)="logout()">Log Out</button></li>
+        <!-- <li class="dropdown welcome-profile-dropdown"  [ngClass]="status ? 'welcome-profile-dropdown-open' : ''" (click)="profileclick()"> -->
+        <!-- <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+             aria-expanded="false">
+            <div class="username">
+              Welcome
+              <label id="lblEmailAddress">{{emailAddress}}</label>
+            </div>
+            <div class="userphoto">
+              <img src="assets/images/DefaultUser.png" alt="" title="" class="photo">
+            </div>
+            <span class="caret"></span>
+          </a> -->
+        <!-- <ul class="dropdown-menu">
+            <li>
+              <a class="make-pointer" (click)="profileClick();" >Profile</a>
+            </li>
+            <li>
+              <a class="make-pointer" (click)="logoutClick();">Logout</a>
+            </li>
+          </ul> -->
+      </ul>
+    </div>
+  </div>
+</div>

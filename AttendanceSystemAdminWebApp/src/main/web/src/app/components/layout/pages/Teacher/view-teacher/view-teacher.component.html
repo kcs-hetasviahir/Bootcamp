@@ -1,0 +1,110 @@
+<div class="titlerow">
+    <h1 class="title">
+        <i class="las la-chalkboard-teacher"></i>TEACHER
+        <a class="title-under-icon ml-auto" title="View Notes" href="javascript:void(0);">
+        </a>
+    </h1>
+</div>
+<div class="content">
+    <div class="d-flex justify-content-between">
+        <h2>TEACHER</h2>
+        <div class="switch-field text-end">
+        </div>
+    </div>
+
+    <div class="content-body">
+        <div class="rowboxwidget paddingnone" id="print-content">
+            <div class="ps-4" id="non-printable">
+                <mat-form-field appearance="standard">
+                    <mat-label>Search</mat-label>
+                    <input matInput (keyup)="applyFilter($event)" placeholder="Search here" #input>
+                </mat-form-field>
+            </div>
+
+            <div class="table-responsive">
+                <table mat-table [dataSource]="dataSource" (matSortChange)="sortData($event)" matSort
+                    class="table table-borderless" id="table-data">
+                    <ng-container matColumnDef="employeeId">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Teacher Code</th>
+                        <td mat-cell *matCellDef="let element"> {{element.employeeId}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="registrationId">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Registration Id</th>
+                        <td mat-cell *matCellDef="let element"> {{element.registrationId}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="fullName">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name</th>
+                        <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="gender">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
+                        <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="dateOfBirth">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Date of Birth </th>
+                        <td mat-cell *matCellDef="let element"> {{element.dateOfBirth}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="dateOfJoining">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Date Of Joining </th>
+                        <td mat-cell *matCellDef="let element"> {{element.dateOfJoining}}
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="mobile">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Mobile </th>
+                        <td mat-cell *matCellDef="let element"> {{element.mobile }} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="email">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+                        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="designation">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Designation </th>
+                        <td mat-cell *matCellDef="let element"> {{element.designation}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="superivorName">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> SuperivorName </th>
+                        <td mat-cell *matCellDef="let element"> {{element.superivorName}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="superivorId">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Superivor Id </th>
+                        <td mat-cell *matCellDef="let element"> {{element.superivorId}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="ssaDistrict">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> District </th>
+                        <td mat-cell *matCellDef="let element"> {{element.ssaDistrict}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="ssaBlock">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Block </th>
+                        <td mat-cell *matCellDef="let element"> {{element.ssaBlock}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="ssaSchool">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> School </th>
+                        <td mat-cell *matCellDef="let element"> {{element.ssaSchool}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="id">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+                        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="action">
+                        <th mat-header-cell *matHeaderCellDef> Action </th>
+
+                        <td mat-cell *matCellDef="let element">
+                            <button type='edit' class='button-custom'>
+                                <i class='icon-edit' (click)="updateTeacher(element)"></i>
+                            </button>
+                            <button type='button' class='button-custom'>
+                                <i class='icon-delete' (click)="deleteTeacher(element)"></i>
+                            </button>
+                        </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+
+            </div>
+            <mat-paginator id="non-printable" [length]="rowCount" [pageSize]="pageSize" [showFirstLastButtons]="true"
+                (page)="pageNavigations($event)" [pageSizeOptions]="pageSizeOptions">
+            </mat-paginator>
+        </div>
+    </div>
+</div>

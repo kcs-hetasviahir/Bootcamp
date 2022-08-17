@@ -1,0 +1,194 @@
+<div class="titlerow">
+  <h1 class="title">
+    <i class="las la-chalkboard-teacher"></i>EDITING TEACHER
+  </h1>
+</div>
+<div class="content">
+  <form class="rowboxwidget p-0" [formGroup]="teacherForm" (ngSubmit)="onTeacherClick(teacherForm.value)"
+    *ngIf="isdata">
+    <div class="content-body p-3">
+      <div class="row">
+        <div class="col-md-6 col-xl-4 mb-3 mb-md-1 mb-lg-0">
+          <mat-form-field class="example-full-width w-100">
+            <label class="d-flex">First Name <span class="mat-error ms-1">*</span></label>
+            <input matInput formControlName="firstName" required>
+            <mat-error *ngIf="hasError('firstName', 'required')" class="mat-input-error">
+              First Name is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6 col-xl-4 mb-3 mb-md-1 mb-lg-0">
+          <mat-form-field class="example-full-width w-100">
+            <label>Middle Name</label>
+            <input matInput formControlName="middleName">
+          </mat-form-field>
+        </div>
+        <div class="col-md-6 col-xl-4 mb-3 mb-md-1 mb-lg-0">
+          <mat-form-field class="example-full-width w-100">
+            <label class="d-flex">Last Name <span class="mat-error ms-1">*</span></label>
+            <input matInput formControlName="lastName" required>
+            <mat-error *ngIf="hasError('lastName', 'required')" class="mat-input-error">
+              Last Name is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6 col-xl-4 mb-3 mb-md-1 mb-lg-0 mt-1">
+          <mat-form-field appearance="fill" class="example-full-width w-100 mt-2">
+            <mat-label>Date Of Birth</mat-label>
+            <input matInput [matDatepicker]="frompicker" formControlName="dateOfBirth">
+            <mat-datepicker-toggle matSuffix [for]="frompicker"></mat-datepicker-toggle>
+            <mat-datepicker #frompicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6 col-xl-4 mb-3 mb-md-1 mb-lg-0 mt-1">
+          <mat-form-field appearance="fill" class="example-full-width w-100 mt-2">
+            <mat-label>Joining Date</mat-label>
+            <input matInput [matDatepicker]="topicker" formControlName="dateOfJoining">
+            <mat-datepicker-toggle matSuffix [for]="topicker"></mat-datepicker-toggle>
+            <mat-datepicker #topicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6 col-xl-4 mb-3 mb-md-1 mb-lg-0">
+          <label class="d-block mt-3">
+            Gender
+          </label>
+          <mat-radio-group formControlName="attendanceStatus" class="example-full-width w-100" formControlName="gender">
+            <mat-radio-button value="Male" class="me-4">Male</mat-radio-button>
+            <mat-radio-button value="Female" class="me-4">Female</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div class="col-md-6 col-xl-4 mb-3 mb-md-1 mb-lg-0">
+          <mat-form-field class="example-full-width w-100">
+            <label>House Name</label>
+            <input matInput formControlName="houseName">
+          </mat-form-field>
+        </div>
+        <div class="col-md-6 col-xl-4 mb-3 mb-md-1 mb-lg-0">
+          <mat-form-field class="example-full-width w-100">
+            <label class="d-flex">Address 1 <span class="mat-error ms-1">*</span></label>
+            <input matInput formControlName="address1">
+          </mat-form-field>
+        </div>
+        <div class="col-md-6 col-xl-4 mb-3 mb-md-1 mb-lg-0">
+          <mat-form-field class="example-full-width w-100">
+            <label>Address 2</label>
+            <input matInput formControlName="address2">
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6 col-xl-4 mb-3 mb-md-1 mb-lg-0">
+          <mat-form-field class="example-full-width w-100">
+            <label>District</label>
+            <input matInput formControlName="district">
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6 col-xl-4 mb-3 mb-md-1 mb-lg-0">
+          <mat-form-field class="example-full-width w-100">
+            <label class="d-flex">Taluka <span class="mat-error ms-1">*</span></label>
+            <input matInput formControlName="taluka" required>
+            <mat-error *ngIf="hasError('taluka', 'required')" class="mat-input-error">
+              Taluka is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6 col-xl-4 mb-3 mb-md-1 mb-lg-0">
+          <mat-form-field class="example-full-width w-100">
+            <label class="d-flex">Village <span class="mat-error ms-1">*</span></label>
+            <input matInput formControlName="village" required>
+            <mat-error *ngIf="hasError('village', 'required')" class="mat-input-error">
+              Village is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6 col-xl-4 mb-3 mb-md-1 mb-lg-0">
+          <mat-form-field class="example-full-width w-100">
+            <label class="d-flex">Pin Code <span class="mat-error ms-1">*</span></label>
+            <input matInput formControlName="pincode" required>
+            <mat-error *ngIf="hasError('pincode', 'required')" class="mat-input-error">
+              Pin Code is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6 col-xl-4 mb-3 mb-md-1 mb-lg-0">
+          <mat-form-field class="example-full-width w-100">
+            <label class="d-flex">Mobile <span class="mat-error ms-1">*</span></label>
+            <input matInput formControlName="mobile" readonly>
+            <mat-error *ngIf="hasError('mobile', 'required')" class="mat-input-error">
+              Mobile No is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6 col-xl-4 mb-3 mb-md-1 mb-lg-0">
+          <mat-form-field class="example-full-width w-100">
+            <label class="d-flex">Email <span class="mat-error ms-1">*</span></label>
+            <input matInput formControlName="email" readonly>
+            <mat-error *ngIf="hasError('email', 'required')" class="mat-input-error">
+              Email is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6 col-xl-4 mb-3 mb-md-1 mb-lg-0">
+          <mat-form-field class="example-full-width w-100">
+            <label class="d-flex">Designation/Role <span class="mat-error ms-1">*</span></label>
+            <mat-select formControlName="designation">
+              <mat-option *ngFor="let data of designationList" [value]="data.id">{{
+                data.designationName
+                }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="hasError('designation', 'required')" class="mat-input-error">
+              Designation is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6 col-xl-4 mb-3 mb-md-1 mb-lg-0">
+          <mat-form-field class="example-full-width w-100">
+            <label class="d-flex">SSA District <span class="mat-error ms-1">*</span></label>
+            <mat-select formControlName="ssaDistrict" (selectionChange)="distictSelectedValue($event)">
+              <mat-option *ngFor="let data of distictList" [value]="data.districtCode">{{
+                data.districtName }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="hasError('ssaDistrict', 'required')" class="mat-input-error">
+              Distict is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6 col-xl-4 mb-3 mb-md-1 mb-lg-0">
+          <mat-form-field class="example-full-width w-100">
+            <label class="d-flex">SSA Block<span class="mat-error ms-1">*</span></label>
+            <mat-select formControlName="ssaBlock" (selectionChange)="blockSelectedValue($event)">
+              <mat-option *ngFor="let data of blockList" [value]="data.blockCode">{{
+                data.blockName }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="hasError('ssaBlock', 'required')" class="mat-input-error">
+              Block is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6 col-xl-4 mb-3 mb-md-1 mb-lg-0">
+          <mat-form-field class="example-full-width w-100">
+            <label class="d-flex">SSA School<span class="mat-error ms-1">*</span></label>
+            <mat-select formControlName="ssaSchool">
+              <mat-option *ngFor="let data of schoolList" [value]="data.schoolCode">{{
+                data.schoolName }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="hasError('ssaSchool', 'required')" class="mat-input-error">
+              School is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+
+      </div>
+    </div>
+    <div class="text-end p-3 border-top" *ngIf="actionvisible">
+      <button mat-raised-button color="primary" class="me-3">Update</button>
+
+      <a mat-button (click)="onCloseClick()" type="button" class="bg-grey"> Cancel </a>
+    </div>
+  </form>
+</div>

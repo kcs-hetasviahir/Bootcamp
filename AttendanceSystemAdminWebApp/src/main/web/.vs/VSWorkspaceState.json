@@ -1,0 +1,18 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\components",
+    "\\src\\app\\components\\layout",
+    "\\src\\app\\components\\layout\\pages",
+    "\\src\\app\\components\\layout\\pages\\Levels",
+    "\\src\\app\\components\\layout\\pages\\Levels\\leveladdedit",
+    "\\src\\app\\components\\layout\\pages\\ResortSetUp",
+    "\\src\\app\\components\\layout\\pages\\ResortSetUp\\Shared",
+    "\\src\\app\\components\\layout\\pages\\ResortSetUp\\Shared\\time-between-scan",
+    "\\src\\app\\models"
+  ],
+  "SelectedNode": "\\src\\app\\components\\layout\\pages\\Levels\\leveladdedit\\leveladdedit.component.ts",
+  "PreviewInSolutionExplorer": false
+}

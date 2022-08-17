@@ -1,0 +1,66 @@
+<div class="titlerow">
+  <h1 *ngIf="!isUpdateForm" class="title">
+    <i class="las la-user-alt"></i>ADDING USERS
+  </h1>
+  <h1 *ngIf="isUpdateForm" class="title">
+    <i class="las la-user-alt"></i>EDITING USERS
+  </h1>
+</div>
+<div class="content">
+  <form class="rowboxwidget p-0" [formGroup]="userForm" (ngSubmit)="onUserClick(userForm.value)" *ngIf="isdata">
+    <div class="content-body p-3">
+      <div class="row">
+        <div class="col-md-6 col-xl-4 mb-3 mb-md-0">
+          <mat-form-field class="example-full-width w-100">
+            <label class="d-flex">Name <span class="mat-error ms-1">*</span></label>
+            <input matInput formControlName="name" required>
+            <mat-error *ngIf="hasError('name', 'required')" class="mat-input-error">
+              Name is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6 col-xl-4 mb-3 mb-md-0">
+          <mat-form-field class="example-full-width w-100">
+            <label class="d-flex">User Role <span class="mat-error ms-1">*</span></label>
+            <mat-select matInput formControlName="userRole">
+              <mat-option value="ADMIN" selected="true">ADMIN</mat-option>
+              <mat-option value="PRINCIPAL">PRINCIPAL</mat-option>
+            </mat-select>
+            <mat-error *ngIf="hasError('userRole', 'required')" class="mat-input-error">
+              User Role is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6 col-xl-4 mb-3 mb-md-0">
+          <mat-form-field class="example-full-width w-100">
+            <label class="d-flex">User Name <span class="mat-error ms-1">*</span></label>
+            <input matInput formControlName="username" type="text" required>
+
+
+            <mat-error *ngIf="hasError('username', 'required')" class="mat-input-error">
+              User Name is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6 col-xl-4 mb-3 mb-md-0 mb-md-0" *ngIf="!isUpdateForm">
+          <mat-form-field class="example-full-width w-100">
+            <label class="d-flex">Password <span class="mat-error ms-1">*</span></label>
+            <input matInput type="text" formControlName="password" required>
+            <mat-error *ngIf="hasError('password', 'required')" class="mat-input-error">
+              Password is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+      </div>
+    </div>
+    <div class="text-end p-3 border-top" *ngIf="actionvisible">
+      <button mat-raised-button color="primary" class="me-3" *ngIf="!isUpdateForm">Save</button>
+      <button mat-raised-button color="primary" class="me-3" *ngIf="isUpdateForm">Update</button>
+      <button mat-raised-button class="bg-grey" (click)="onCloseClick()">Cancel</button>
+    </div>
+
+  </form>
+</div>

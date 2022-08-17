@@ -1,0 +1,259 @@
+<div class="titlerow">
+    <h1 class="title">
+        <i class="las la-tachometer-alt"></i>Dashboard
+        <a class="title-under-icon ml-auto" title="View Notes" href="javascript:void(0);">
+        </a>
+    </h1>
+</div>
+<div class="content">
+    <mat-card class="text-center shadow-sm mb-4 rounded-0">
+        <mat-card-title-group>
+        </mat-card-title-group>
+        <mat-card-content>
+            <h2 class="mb-0 text-uppercase color-primary">Total Teacher</h2>
+            <h2>{{teacherRowCount}}</h2>
+        </mat-card-content>
+    </mat-card>
+
+    <div class="switch-field text-left">
+        <div class="row">
+            <div class="col-lg-6">
+                <h3 class="text-uppercase">Teacher Attendance</h3>
+                <div class="chart-container border">
+                    <canvas id="myChart" width="500" class="p-3"></canvas>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div>
+                    <h3 class="text-uppercase" style="display:inline-block;margin-right:263px;"> Distict, Block and
+                        School wise Teacher Count </h3>
+                    <button *ngIf="isBlock" style="display:inline-block;" mat-raised-button color="primary" class="me-2"
+                        (click)="getPreviousDistict()">Distict</button>
+                    <button *ngIf="isCluster" mat-raised-button color="primary" class="me-2"
+                        (click)="getPreviousBlock()">Block</button>
+                    <button *ngIf="isSchool" mat-raised-button color="primary" class="me-2"
+                        (click)="getPreviousCluster()">Cluster</button>
+                </div>
+                <div class="chart-container border">
+                    <canvas id="teacherChart" width="500" class="p-3"></canvas>
+                </div>
+            </div>
+        </div>
+
+
+        <div *ngIf="isDistict">
+            <h2 class="mt-3 text-center text-uppercase">District</h2>
+            <div class="mb-3">
+                <div class="table-responsive" id="chart-table">
+                    <table mat-table [dataSource]="dataSource" matSort class="shadow-sm table table-borderless"
+                        id="table-data">
+                        <ng-container matColumnDef="districtName">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                <h3 class="m-0 color-primary text-uppercase">District Name</h3>
+                            </th>
+                            <td mat-cell *matCellDef="let element">
+                                {{element.districtName}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="teacherCount">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                <h3 class="m-0 color-primary text-uppercase">Teacher Count</h3>
+                            </th>
+                            <td mat-cell *matCellDef="let element"> {{element.teacherCount}}
+                            </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="getBlock(row)"></tr>
+                    </table>
+                </div>
+                <mat-paginator [length]="distictRowCount" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+                    [showFirstLastButtons]="true" (page)="pageNavigations($event)">
+                </mat-paginator>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <mat-card class="rounded-0 shadow-sm text-center mb-3 mb-sm-0">
+                        <mat-card-title-group>
+                        </mat-card-title-group>
+                        <mat-card-content>
+                            <h2 class="mb-0 text-uppercase color-primary">Total Distict</h2>
+                            <h2>4</h2>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                <div class="col-sm-6">
+                    <mat-card class="rounded-0 shadow-sm text-center mb-3 mb-sm-0">
+                        <mat-card-title-group>
+                        </mat-card-title-group>
+                        <mat-card-content>
+                            <h2 class="mb-0 text-uppercase color-primary">Total Teacher</h2>
+                            <h2>81</h2>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="isBlock">
+            <h2 class="mt-3 text-center text-uppercase">Block</h2>
+            <div class="mb-3">
+                <div class="table-responsive" id="chart-table">
+                    <table mat-table [dataSource]="dataSource" matSort class="shadow-sm table table-borderless"
+                        id="table-data">
+
+                        <ng-container matColumnDef="districtName">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                <h3 class="m-0 color-primary text-uppercase">Block Name</h3>
+                            </th>
+                            <td mat-cell *matCellDef="let element">
+                                {{element.blockName}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="teacherCount">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                <h3 class="m-0 color-primary text-uppercase">Teacher Count</h3>
+                            </th>
+                            <td mat-cell *matCellDef="let element"> {{element.teacherCount}}
+                            </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="getCluster(row)"></tr>
+
+                    </table>
+                </div>
+                <mat-paginator [length]="rowCount" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+                    [showFirstLastButtons]="true" (page)="pageNavigations($event)">
+                </mat-paginator>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <mat-card class="rounded-0 shadow-sm text-center mb-3 mb-sm-0">
+                        <mat-card-title-group>
+                        </mat-card-title-group>
+                        <mat-card-content>
+                            <h2 class="mb-0 text-uppercase color-primary">Total Block</h2>
+                            <h2>3</h2>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                <div class="col-sm-6">
+                    <mat-card class="rounded-0 shadow-sm text-center mb-3 mb-sm-0">
+                        <mat-card-title-group>
+                        </mat-card-title-group>
+                        <mat-card-content>
+                            <h2 class="mb-0 text-uppercase color-primary">Total Teacher</h2>
+                            <h2>130</h2>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="isCluster">
+            <h2 class="mt-3 text-center text-uppercase">Cluster</h2>
+            <div class="mb-3">
+                <div class="table-responsive" id="chart-table">
+                    <table mat-table [dataSource]="dataSource" matSort class="shadow-sm table table-borderless"
+                        id="table-data">
+                        <ng-container matColumnDef="districtName">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                <h3 class="color-primary text-uppercase m-0">Cluster Name</h3>
+                            </th>
+                            <td mat-cell *matCellDef="let element">
+                                {{element.crcName}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="teacherCount">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                <h3 class="m-0 color-primary text-uppercase">Teacher Count</h3>
+                            </th>
+                            <td mat-cell *matCellDef="let element"> {{element.teacherCount}}
+                            </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="getSchool(row)"></tr>
+                    </table>
+                </div>
+                <mat-paginator [length]="rowCount" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+                    [showFirstLastButtons]="true" (page)="pageNavigations($event)">
+                </mat-paginator>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <mat-card class="rounded-0 shadow-sm text-center mb-3 mb-sm-0">
+                        <mat-card-title-group>
+                        </mat-card-title-group>
+                        <mat-card-content>
+                            <h2 class="mb-0 text-uppercase color-primary">Total Cluster</h2>
+                            <h2>2</h2>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                <div class="col-sm-6">
+                    <mat-card class="rounded-0 shadow-sm text-center mb-3 mb-sm-0">
+                        <mat-card-title-group>
+                        </mat-card-title-group>
+                        <mat-card-content>
+                            <h2 class="mb-0 text-uppercase color-primary">Total Teacher</h2>
+                            <h2>20</h2>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="isSchool">
+            <h2 class="mt-3 text-center text-uppercase">School</h2>
+            <div class="mb-3">
+                <div class="table-responsive" id="chart-table">
+                    <table mat-table [dataSource]="dataSource" matSort class="shadow-sm table table-borderless"
+                        id="table-data">
+                        <ng-container matColumnDef="districtName">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                <h3 class="color-primary text-uppercase m-0">School Name</h3>
+                            </th>
+                            <td mat-cell *matCellDef="let element">
+                                {{element.schoolName}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="teacherCount">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                <h3 class="m-0 color-primary text-uppercase">Teacher Count</h3>
+                            </th>
+                            <td mat-cell *matCellDef="let element"> {{element.teacherCount}}
+                            </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                </div>
+                <mat-paginator [length]="rowCount" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+                    [showFirstLastButtons]="true" (page)="pageNavigations($event)">
+                </mat-paginator>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <mat-card class="rounded-0 shadow-sm text-center mb-3 mb-sm-0">
+                        <mat-card-title-group>
+                        </mat-card-title-group>
+                        <mat-card-content>
+                            <h2 class="mb-0 text-uppercase color-primary">Total School</h2>
+                            <h2>2</h2>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                <div class="col-sm-6">
+                    <mat-card class="rounded-0 shadow-sm text-center mb-3 mb-sm-0">
+                        <mat-card-title-group>
+                        </mat-card-title-group>
+                        <mat-card-content>
+                            <h2 class="mb-0 text-uppercase color-primary">Total Teacher</h2>
+                            <h2>100</h2>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.js"></script>

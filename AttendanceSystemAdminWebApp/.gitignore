@@ -1,0 +1,52 @@
+target/**
+.project
+/target/
+/.metadata/
+/target/
+/src/main/web/dist/
+/src/main/web/node/
+/src/main/web/e2e/
+
+# compiled output
+/src/main/web/dist
+/src/main/web/tmp
+/src/main/web/out-tsc
+# Only exists if Bazel was run
+/src/main/web/bazel-out
+
+# dependencies
+/src/main/web/node_modules
+
+# profiling files
+chrome-profiler-events*.json
+speed-measure-plugin*.json
+
+# IDEs and editors
+/src/main/web/.idea
+/src/main/web/.project
+/src/main/web/.classpath
+/src/main/web/.c9/
+/src/main/web/*.launch
+/src/main/web/.settings/
+/src/main/web/*.sublime-workspace
+
+# IDE - VSCode
+/src/main/web.vscode/*
+!/src/main/web.vscode/settings.json
+!/src/main/web/.vscode/tasks.json
+!/src/main/web/.vscode/launch.json
+!/src/main/web/.vscode/extensions.json
+/src/main/web/.history/*
+
+# misc
+/src/main/web/.sass-cache
+/src/main/web/connect.lock
+/src/main/web/coverage
+/src/main/web/libpeerconnection.log
+/src/main/web/pm-debug.log
+/src/main/web/arn-error.log
+/src/main/web/testem.log
+/src/main/web/typings
+
+.idea
+$LOG_LOCATION$
